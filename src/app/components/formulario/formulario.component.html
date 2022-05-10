@@ -1,0 +1,60 @@
+<h4 class=" mb-3">Selecione uma opção</h4>
+<div class=" my-3">
+  <div class="form-check">
+    <input id="entrada" [checked]="true" name="tipo" [(ngModel)]="tipo" type="radio"
+           class="form-check-input" value="entrada" required>
+    <label class="form-check-label " for="entrada">Entrada</label>
+  </div>
+  <div class="form-check">
+    <input id="saida" name="tipo" [(ngModel)]="tipo" type="radio" class="form-check-input"
+           value="saida" required>
+    <label class="form-check-label " for="saida">Saída</label>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<form class="needs-validation" novalidate="">
+  <div class="row g-3">
+    <div class="col-sm-3">
+      <label for="data" class="form-label">Data</label>
+      <input [(ngModel)]="date" type="date" name="data" class="form-control" id="data" placeholder="" value="" required>
+    </div>
+
+    <div class="col-sm-7">
+      <label for="lastName" class="form-label">Descrição</label>
+      <input [(ngModel)]="descricao" name="descricao" type="text" class="form-control" id="lastName" placeholder=""
+             value="" required>
+    </div>
+
+    <div class="col-2">
+      <label for="username" class="form-label">Valor</label>
+      <div class="input-group has-validation">
+        <input [(ngModel)]="valor" name="valor" type="number" class="form-control" id="username" placeholder="R$"
+               required>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="my-4">
+
+  <button class="w-100 btn btn-primary btn-lg" (click)="inserirValor()">Registrar</button>
+
+  <hr class="my-4">
+  <h4 class=" mb-3">Histórico</h4>
+  <ul class="list-group mb-3">
+    <li *ngFor="let dt of result" class="list-group-item d-flex justify-content-between lh-sm"
+        [class]="dt.tipo === 'entrada' ? 'text-success': 'text-danger'">
+      <div>
+        <h6 class="my-0">{{ dt.tipo }}</h6>
+        <small>{{ dt.descricao }}</small>
+      </div>
+      <span>{{ dt.tipo === 'saida' ? '−' : ''}}${{ dt.valor }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Total ($)</span>
+      <strong [class]="total < 0 ? 'text-danger': ''">$ {{ total }}</strong>
+    </li>
+  </ul>
+</form>

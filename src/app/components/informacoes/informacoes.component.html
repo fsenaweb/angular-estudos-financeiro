@@ -1,0 +1,25 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-success">Entradas</span>
+</h4>
+<ul class="list-group mb-3">
+  <li *ngFor="let ent of entradas" class="list-group-item d-flex justify-content-between lh-sm">
+    <div>
+      <h6 class="my-0">{{ ent.descricao }}</h6>
+      <small class="text-muted">{{ ent.date }}</small>
+    </div>
+    <span class="text-muted">${{ ent.valor }}</span>
+  </li>
+</ul>
+
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-danger">Saídas</span>
+</h4>
+<ul class="list-group mb-3">
+  <li *ngFor="let ent of saidas" class="list-group-item d-flex justify-content-between lh-sm">
+    <div>
+      <h6 class="my-0">{{ ent.descricao }}</h6>
+      <small class="text-muted">{{ ent.date }}</small>
+    </div>
+    <span class="text-muted">${{ ent.valor }}</span>
+  </li>
+</ul>
